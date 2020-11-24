@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import { FC } from 'react';
 import './App.css';
+import { signOut, useLoggedInUser } from './firebase/firebase';
+import { BrowserRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom';
+import { AppBar, Button, CircularProgress, Container, Toolbar } from '@material-ui/core';
+import Notfound from './components/NotFound';
+import Home from './components/Home';
+import Login from './components/Login';
 
-function App() {
+const App: FC = () => {
+
+  const user = useLoggedInUser();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppBar color='primary' position='static' variant='outlined'>
+        <Toolbar>
+          <Link to='/'>
+            <Button>Home</Button>
+          </Link>
+          {user === null && (
+            <Link to='/login'>
+              <Button>Login</Button>
+            </Link>
+          )}
+          {user && (
+            <Button onClick={signOut}>
+              Logout
+            </Button>
+          )}
+        </Toolbar>
+      </AppBar>
+
+      {user === null && <Redirect to='/login' />}
+
+      <main className='App'>
+        <Container maxWidth='sm'>
+          {user === undefined ? (
+            <CircularProgress />
+          ) : (
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/login' exact component={Login} />
+              <Route component={Notfound} />
+            </Switch>
+          )}
+        </Container>
+      </main>
+    </Router>
   );
-}
+};
 
 export default App;
