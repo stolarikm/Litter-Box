@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -15,7 +16,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-//const db = firebase.firestore();
+const db = firebase.firestore();
 
 type User = Pick<firebase.User, 'uid' | 'email'>;
 
@@ -36,3 +37,10 @@ export const signIn = (email: string, password: string) =>
   firebase.auth().signInWithEmailAndPassword(email, password);
 
 export const signOut = () => firebase.auth().signOut();
+
+export type FavoriteFact = {
+  by: Pick<firebase.User, 'uid'>;
+  fact: Pick<CatFact, "_id">;
+}
+
+export const favoriteFactsCollection = db.collection('favoriteFacts') as firebase.firestore.CollectionReference<FavoriteFact>;
