@@ -4,7 +4,7 @@ import { signOut, useLoggedInUser } from './firebase/firebase';
 import { BrowserRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom';
 import { AppBar, Button, CircularProgress, Container, Toolbar } from '@material-ui/core';
 import Notfound from './components/NotFound';
-import Home from './components/Home';
+import Home from './pages/Home';
 import Login from './components/Login';
 
 const App: FC = () => {
@@ -34,7 +34,7 @@ const App: FC = () => {
       {user === null && <Redirect to='/login' />}
 
       <main className='App'>
-        <Container maxWidth='sm'>
+        <Container>
           {user === undefined ? (
             <CircularProgress />
           ) : (
