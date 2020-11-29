@@ -6,6 +6,8 @@ import { AppBar, Button, CircularProgress, Container, Toolbar } from '@material-
 import Notfound from './components/NotFound';
 import Home from './pages/Home';
 import Login from './components/Login';
+import Catbot from './components/Catbot';
+
 
 const App: FC = () => {
 
@@ -46,6 +48,7 @@ const App: FC = () => {
           )}
         </Container>
       </main>
+      {user !== null && <Catbot />}
     </Router>
   );
 };
