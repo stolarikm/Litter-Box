@@ -6,13 +6,13 @@ export default class CatFactsApiProvider {
         return await response.json();
     }
 
-    static async getRandomFacts(count: number): Promise<CatFact[]> {
-        const response = await fetch(`${this.baseUrl}/facts/random?amount=${count}`);
+    static async getRandomFacts(count: number, abortSignal?: AbortSignal): Promise<CatFact[]> {
+        const response = await fetch(`${this.baseUrl}/facts/random?amount=${count}`, {signal: abortSignal});
         return await response.json();
     }
 
-    static async getFact(id: string): Promise<CatFact> {
-        const response = await fetch(`${this.baseUrl}/facts/${id}`);
+    static async getFact(id: string, abortSignal?: AbortSignal): Promise<CatFact> {
+        const response = await fetch(`${this.baseUrl}/facts/${id}`, {signal: abortSignal});
         return await response.json();
     }
 }
