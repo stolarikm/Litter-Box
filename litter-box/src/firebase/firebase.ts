@@ -18,8 +18,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-type User = Pick<firebase.User, 'uid' | 'email'>;
-
 export const useLoggedInUser = () => {
   const [user, setUser] = useState<firebase.User | null>();
 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import CatFactsApiProvider from "../api/cat-facts-api-provider";
 import {
     FavoriteFact,
     favoriteFactsCollection,
