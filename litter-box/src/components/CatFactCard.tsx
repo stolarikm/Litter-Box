@@ -51,7 +51,7 @@ const CatFactCard: FC<Props> = ({ fact }) => {
             <CardHeader className={classes.cardHeader}
                 action={user ?
                     <Fab aria-label="Favorite" onClick={() => isFavorite ? removeFavorite(fact) : markAsFavorite(fact)} >
-                        {isFavorite ? <StarIcon /> :<StarBorderIcon /> }
+                        {isFavorite ? <StarIcon color="primary" /> :<StarBorderIcon /> }
                     </Fab> : undefined
                 }
             />

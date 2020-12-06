@@ -1,6 +1,6 @@
 .App {
     text-align: center;
-    background-color: #282c34;
+    background-color: #404040;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,16 +11,16 @@
 }
 
 .rcw-conversation-container > .rcw-header {
-    background-color: #3f51b5 !important;
+    background-color:#76d2ff !important;
 }
 
 .rcw-client > .rcw-message-text {
-    background-color: #3f51b5 !important;
+    background-color: #76d2ff !important;
     color: white;
 }
 
 .rcw-launcher {
-    background-color: #3f51b5 !important;
+    background-color: #76d2ff !important;
 }
 
 @media screen and (max-width: 800px) {
@@ -42,4 +42,8 @@
 
 header a {
     text-decoration: none;
+}
+
+header button > span {
+  color: white;
 }

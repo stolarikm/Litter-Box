@@ -26,6 +26,9 @@ const useStyles = makeStyles({
   loginButtonLeft: {
     float: 'left',
   },
+  logo: {
+    color: '#39a1d6',
+  },
 });
 
 const Login: FC = () => {
@@ -44,7 +47,7 @@ const Login: FC = () => {
       <Grid item>
         <Card>
           <CardContent>
-            <Icon path={mdiCat} 
+            <Icon className={classes.logo} path={mdiCat} 
               size={5} />
             <Typography variant='h5' component='h1'>
               Sign in
