@@ -48,16 +48,13 @@ const CatFactCard: FC<Props> = ({ fact }) => {
 
     return (
         <Card variant="outlined" className={classes.cardContent}>
-            {user && (<>
-                <CardHeader className={classes.cardHeader}
-                    action={
-                        <Fab aria-label="Favorite" onClick={() => isFavorite ? removeFavorite(fact) : markAsFavorite(fact)} >
-                            {isFavorite ? <StarIcon /> :<StarBorderIcon /> }
-                        </Fab>
-                    }
-                />
-                </>
-            )}
+            <CardHeader className={classes.cardHeader}
+                action={user ?
+                    <Fab aria-label="Favorite" onClick={() => isFavorite ? removeFavorite(fact) : markAsFavorite(fact)} >
+                        {isFavorite ? <StarIcon /> :<StarBorderIcon /> }
+                    </Fab> : undefined
+                }
+            />
             <CardContent>
                 <Typography variant="h5" component="p">
                     {fact.text}
