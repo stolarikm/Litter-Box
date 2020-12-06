@@ -9,13 +9,31 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
 import { signIn, signUp, useLoggedInUser } from '../firebase/firebase';
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
+import { mdiCat } from '@mdi/js'; 
+import Icon from '@mdi/react'
+
+const useStyles = makeStyles({
+  loginActionArea: {
+    display: 'block',
+  },
+  loginButton: {
+    margin: '0 5px 10px 5px',
+  },
+  loginButtonRight: {
+    float: 'right',
+  },
+  loginButtonLeft: {
+    float: 'left',
+  },
+});
 
 const Login: FC = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string>();
   const isLoggedIn = useLoggedInUser();
+  const classes = useStyles();
 
   if (isLoggedIn) {
     return <Redirect to='/' />;
@@ -26,10 +44,11 @@ const Login: FC = () => {
       <Grid item>
         <Card>
           <CardContent>
+            <Icon path={mdiCat} 
+              size={5} />
             <Typography variant='h5' component='h1'>
               Sign in
             </Typography>
-            <Typography variant='subtitle1'>Use your Account</Typography>
             <TextField
               label='Email'
               type='email'
@@ -57,8 +76,8 @@ const Login: FC = () => {
               </Typography>
             )}
           </CardContent>
-          <CardActions>
-            <Button
+          <CardActions className={classes.loginActionArea}>
+            <Button className={`${classes.loginButton} ${classes.loginButtonLeft}`}
               variant='text'
               size='large'
               color='primary'
@@ -70,9 +89,9 @@ const Login: FC = () => {
                 }
               }}
             >
-              Create account
+              Sign up
             </Button>
-            <Button
+            <Button className={`${classes.loginButton} ${classes.loginButtonRight}`}
               variant='text'
               size='large'
               color='primary'
