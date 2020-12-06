@@ -1,28 +1,45 @@
 .App {
-  text-align: center;
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  flex-grow: 1;
+    text-align: center;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    flex-grow: 1;
 }
 
 .rcw-conversation-container > .rcw-header {
-  background-color: #3f51b5 !important;
+    background-color: #3f51b5 !important;
 }
 
-.rcw-client > .rcw-message-text  {
-  background-color: #3f51b5 !important;
-  color: white;
+.rcw-client > .rcw-message-text {
+    background-color: #3f51b5 !important;
+    color: white;
 }
 
 .rcw-launcher {
-  background-color: #3f51b5 !important;
+    background-color: #3f51b5 !important;
+}
+
+@media screen and (max-width: 800px) {
+    .rcw-widget-container {
+        height: fit-content !important; 
+    }
+    .rcw-conversation-container .rcw-title {
+        padding: 15px 0 15px !important;
+    }
+
+    .rcw-conversation-container {
+        height: 0% !important;
+    }
+
+    .rcw-conversation-container.active {
+        height: 100vh !important;
+    }
 }
 
 header a {
-  text-decoration: none;
+    text-decoration: none;
 }
