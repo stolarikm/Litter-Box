@@ -1,5 +1,6 @@
 import { Button, CircularProgress, Grid, makeStyles } from "@material-ui/core";
 import React, { FC } from "react";
+import { usePromiseTracker } from "react-promise-tracker";
 import useCatFacts from "../hooks/useCatFacts";
 import CatFactCard from "./CatFactCard";
 
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
 
 const CatFacts: FC = () => {
     const { facts, loadMoreFacts } = useCatFacts();
-
+    const { promiseInProgress } = usePromiseTracker();
     const classes = useStyles();
 
     return (
@@ -24,9 +25,13 @@ const CatFacts: FC = () => {
                         </Grid>
                     ))}
                     <Grid item xs={12}>
-                        <Button variant="contained" onClick={loadMoreFacts}>
-                            Load more facts
-                        </Button>
+                        {promiseInProgress ? (
+                            <CircularProgress />
+                        ) : (
+                            <Button variant="contained" onClick={loadMoreFacts}>
+                                Load more facts
+                            </Button>
+                        )}
                     </Grid>
                 </Grid>
             ) : (

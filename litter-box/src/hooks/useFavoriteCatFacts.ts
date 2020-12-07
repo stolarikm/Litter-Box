@@ -12,10 +12,8 @@ export default function useFavoriteCatFacts() {
         // remove facts that are not in userFavoriteFacts
         const filteredFacts = favoriteFacts.filter(favFact => userFavoriteFacts.some(fact => favFact._id === fact.fact._id));
         const factsToFetch = userFavoriteFacts.filter(fact => !favoriteFacts.some(favFact => favFact._id === fact.fact._id));
-
         
         const promises = factsToFetch.map(fact => CatFactsApiProvider.getFact(fact.fact._id, ac.signal));
-            
         try {
             const result = await Promise.all(promises);
             result.forEach(fact => {

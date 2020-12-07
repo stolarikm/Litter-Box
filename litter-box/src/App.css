@@ -46,4 +46,7 @@ header a {
 
 header button > span {
   color: white;
+  font-size: larger;
+  margin-left: 10px;
+  margin-right: 10px;
 }

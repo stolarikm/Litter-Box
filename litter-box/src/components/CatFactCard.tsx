@@ -6,12 +6,11 @@ import {
     makeStyles,
     Typography,
 } from "@material-ui/core";
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC, useMemo } from "react";
 import { useLoggedInUser } from "../firebase/firebase";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import useCatFactCard from "../hooks/useCatFactCard";
-import CatPicApiProvider from "../api/cat-pic-api-provider";
 
 const useStyles = makeStyles({
     cardContent: {
@@ -43,7 +42,7 @@ const CatFactCard: FC<Props> = ({ fact }) => {
             <CardHeader className={classes.cardHeader}
                 action={user ?
                     <Fab aria-label="Favorite" onClick={() => isFavorite ? removeFavorite(fact) : markAsFavorite(fact)} >
-                        {isFavorite ? <StarIcon color="primary" /> :<StarBorderIcon /> }
+                        {isFavorite ? <StarIcon color="primary" /> :<StarBorderIcon />} 
                     </Fab> : undefined
                 }
             />

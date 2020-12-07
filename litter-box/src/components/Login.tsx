@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     float: 'left',
   },
   logo: {
-    color: '#39a1d6',
+    color: '#76d2ff',
   },
 });
 
