@@ -36,15 +36,7 @@ const CatFactCard: FC<Props> = ({ fact }) => {
     const isFavorite = useMemo(() => {
         return userFavoriteFacts.some(favoriteFact => favoriteFact.fact._id === fact._id);
     }, [userFavoriteFacts, fact])
-
-    //load random cat pic on component create
-    const [catPicUrl, setCatPicUrl] = useState<string>("");
-    useEffect(() => {
-        CatPicApiProvider.getRandomCatPicUrl().then(url => {
-            setCatPicUrl(url);
-        })
-    }, []);
-    const classes = useStyles({ catPicUrl });
+    const classes = useStyles({ catPicUrl: fact.linkedPicUrl });
 
     return (
         <Card variant="outlined" className={classes.cardContent}>
