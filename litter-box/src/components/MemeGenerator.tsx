@@ -19,7 +19,7 @@ const MemeGenerator: FC = () => {
     const classes = useStyles();
     const [uniqueNum, setUniqueNum] = useState<number>(0);
     const [caption, setCaption] = useState<string>("");
-    const [type, setType] = useState<string>("");
+    const [tag, setTag] = useState<string>("");
     const [color, setColor] = useState<string>("white");
     const [filter, setFilter] = useState<string>("");
     const [gif, setGif] = useState<boolean>(false);
@@ -57,13 +57,13 @@ const MemeGenerator: FC = () => {
                             onChange={e => setCaption(e.target.value)}
                         />
                         <TextField
-                            label='Type of cat'
-                            name='type'
+                            label='Tag'
+                            name='tag'
                             fullWidth
                             margin='normal'
                             variant='outlined'
-                            value={type}
-                            onChange={e => setType(e.target.value)}
+                            value={tag}
+                            onChange={e => setTag(e.target.value)}
                             disabled={gif}
                         />
                         <FormControl 
@@ -116,7 +116,7 @@ const MemeGenerator: FC = () => {
                                 onChange={() => setGif(!gif)}
                                 name="gifChecked"
                                 color="primary"
-                                disabled={!!type}
+                                disabled={!!tag}
                             />
                             }
                             label="Gif"
@@ -127,7 +127,7 @@ const MemeGenerator: FC = () => {
                                 <Card>
                                     <CardMedia
                                         component="img"
-                                        alt="Cat meme"
+                                        alt="Not found"
                                         image={preview}
                                         title="Cat meme"
                                     />
@@ -147,7 +147,7 @@ const MemeGenerator: FC = () => {
                                 setPreview(CatPicApiProvider.getCatMemeUrl(
                                 newUniqueNumber,
                                 caption,
-                                type,
+                                tag,
                                 color,
                                 filter,
                                 gif
@@ -162,7 +162,7 @@ const MemeGenerator: FC = () => {
                             onClick={() => download(CatPicApiProvider.getCatMemeUrl(
                                 uniqueNum,
                                 caption,
-                                type,
+                                tag,
                                 color,
                                 filter,
                                 gif

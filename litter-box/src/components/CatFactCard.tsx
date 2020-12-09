@@ -58,7 +58,7 @@ const CatFactCard: FC<Props> = ({ fact }) => {
                         {isFavorite ? <StarIcon color="primary" /> :<StarBorderIcon />} 
                     </Fab>
                     <FacebookShareButton className={classes.shareButton} url={catPicUrl} quote={fact.text}>
-                        <FacebookIcon round size="3.5rem" />
+                        <FacebookIcon round size={60} />
                     </FacebookShareButton>
                     </> : <></>
                 }

@@ -11,27 +11,21 @@ export default class CatPicApiProvider {
     static getCatMemeUrl(
         uniqueNum: number,
         caption: string,
-        type: string,
+        tag: string,
         color: string,
         filter: string,
         gif: boolean,
         ): string {
 
-        var firstPartOfUrl = `${this.baseUrl}/cat${gif ? '/gif' : (type ? '/' + type.toLowerCase() : '')}${caption ? '/says/' + caption : ''}`;
+        var firstPartOfUrl = `${this.baseUrl}/cat${gif ? '/gif' : (tag ? '/' + tag.toLowerCase() : '')}${caption ? '/says/' + caption : ''}`;
 
         var url = new URL(firstPartOfUrl);
         if (filter) {
             url.searchParams.append("filter", filter);
         }
         url.searchParams.append("color", color);
-        if (gif) {
-            //setting lower size for gifs, to avoid large files
-            url.searchParams.append("width", "200");
-            url.searchParams.append("height", "200");
-        } else {
-            url.searchParams.append("width", "600");
-            url.searchParams.append("height", "600");
-        }
+        url.searchParams.append("width", "400");
+        url.searchParams.append("height", "400");
         url.searchParams.append("uniqueNum", uniqueNum.toString());
         return url.toString();
     }
