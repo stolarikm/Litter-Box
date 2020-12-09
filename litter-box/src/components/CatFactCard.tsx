@@ -60,7 +60,7 @@ const CatFactCard: FC<Props> = ({ fact }) => {
                     <FacebookShareButton className={classes.shareButton} url={catPicUrl} quote={fact.text}>
                         <FacebookIcon round size="3.5rem" />
                     </FacebookShareButton>
-                    </> : undefined
+                    </> : <></>
                 }
             />
             <CardContent>

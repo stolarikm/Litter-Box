@@ -22,6 +22,7 @@ import Home from "./pages/Home";
 import Login from "./components/Login";
 import Catbot from "./components/Catbot";
 import Favorites from "./pages/Favorites";
+import Memes from "./pages/Memes";
 
 const customTheme = createMuiTheme({
     palette: {
@@ -55,6 +56,9 @@ const App: FC = () => {
                                 <Link to="/favorites">
                                     <Button>Favorites</Button>
                                 </Link>
+                                <Link to="/memes">
+                                    <Button>Memes</Button>
+                                </Link>
                                 <Button onClick={signOut}>Logout</Button>
                             </>
                         )}
@@ -69,12 +73,21 @@ const App: FC = () => {
                             <CircularProgress />
                         ) : (
                             <Switch>
-                                <Route path="/" exact component={Home} />
-                                <Route path="/login" exact component={Login} />
+                                <Route path="/" 
+                                    exact 
+                                    component={Home} />
+                                <Route path="/login" 
+                                    exact 
+                                    component={Login} />
                                 <Route
                                     path="/favorites"
                                     exact
                                     component={Favorites}
+                                />
+                                <Route
+                                    path="/memes"
+                                    exact
+                                    component={Memes}
                                 />
                                 <Route component={Notfound} />
                             </Switch>
