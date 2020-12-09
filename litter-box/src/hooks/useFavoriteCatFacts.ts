@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { trackPromise } from "react-promise-tracker";
 import CatFactsApiProvider from "../api/cat-facts-api-provider";
-import { addCatPics } from "../utils/catPicUtils";
 import useCatFactCard from "./useCatFactCard";
 
 export default function useFavoriteCatFacts() {
@@ -19,8 +18,7 @@ export default function useFavoriteCatFacts() {
             result.forEach(fact => {
                 filteredFacts.push(fact);
             });
-            const filteredFactsWithPics = await addCatPics(filteredFacts);
-            setFavoriteFacts(filteredFactsWithPics);
+            setFavoriteFacts(filteredFacts);
         } catch (error) {
             console.log(error);
         }

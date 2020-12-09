@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import CatFactsApiProvider from "../api/cat-facts-api-provider";
-import { addCatPics } from "../utils/catPicUtils";
 import { trackPromise } from "react-promise-tracker"
 
 export default function useCatFacts() {
@@ -9,8 +8,7 @@ export default function useCatFacts() {
     const fetchFacts = async (abortSignal?: AbortSignal) => {
         try {
             const response = await CatFactsApiProvider.getRandomFacts(12, abortSignal);
-            const responseWithPics = await addCatPics(response);
-            setFacts(facts.concat(responseWithPics));
+            setFacts(facts.concat(response));
         } catch(error) {
             // console.log('request aborted', error);
         }

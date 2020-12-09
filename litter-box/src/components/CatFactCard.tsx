@@ -11,6 +11,7 @@ import { useLoggedInUser } from "../firebase/firebase";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import useCatFactCard from "../hooks/useCatFactCard";
+import CatPicApiProvider from "../api/cat-pic-api-provider";
 
 const useStyles = makeStyles({
     cardContent: {
@@ -35,7 +36,7 @@ const CatFactCard: FC<Props> = ({ fact }) => {
     const isFavorite = useMemo(() => {
         return userFavoriteFacts.some(favoriteFact => favoriteFact.fact._id === fact._id);
     }, [userFavoriteFacts, fact])
-    const classes = useStyles({ catPicUrl: fact.linkedPicUrl });
+    const classes = useStyles({ catPicUrl: CatPicApiProvider.getUniqueCatPicUrl(fact._id) });
 
     return (
         <Card variant="outlined" className={classes.cardContent}>
