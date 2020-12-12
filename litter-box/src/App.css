@@ -8,10 +8,19 @@
     font-size: calc(10px + 2vmin);
     color: white;
     flex-grow: 1;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+@media screen and (max-width: 800px) {
+    .App {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
 }
 
 .rcw-conversation-container > .rcw-header {
-    background-color:#76d2ff !important;
+    background-color: #76d2ff !important;
 }
 
 .rcw-client > .rcw-message-text {
@@ -25,7 +34,7 @@
 
 @media screen and (max-width: 800px) {
     .rcw-widget-container {
-        height: fit-content !important; 
+        height: fit-content !important;
     }
     .rcw-conversation-container .rcw-title {
         padding: 15px 0 15px !important;
@@ -38,6 +47,9 @@
     .rcw-conversation-container.active {
         height: 100vh !important;
     }
+    .rcw-launcher {
+        margin: 8px !important;
+    }
 }
 
 header a {
@@ -45,8 +57,13 @@ header a {
 }
 
 header button > span {
-  color: white;
-  font-size: larger;
-  margin-left: 10px;
-  margin-right: 10px;
+    color: white;
+    font-size: larger;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.MuiToolbar-root {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }

@@ -1,7 +1,6 @@
 import {
     CircularProgress,
     Grid,
-    makeStyles,
     Typography,
 } from "@material-ui/core";
 import React, { FC } from "react";
@@ -9,21 +8,14 @@ import { usePromiseTracker } from "react-promise-tracker";
 import useFavoriteCatFacts from "../hooks/useFavoriteCatFacts";
 import CatFactCard from "./CatFactCard";
 
-const useStyles = makeStyles({
-    cardsContainer: {
-        margin: "32px 0",
-    },
-});
-
 const FavoriteCatFacts: FC = () => {
     const { favoriteFacts } = useFavoriteCatFacts();
-    const classes = useStyles();
     const { promiseInProgress } = usePromiseTracker();
 
     return (
         <>
             {favoriteFacts.length ? (
-                <Grid container spacing={3} className={classes.cardsContainer}>
+                <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Typography variant="h2" component="h2">
                             Your favorite facts!
